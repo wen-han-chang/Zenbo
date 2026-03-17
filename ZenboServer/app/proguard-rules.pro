@@ -1,0 +1,2 @@
+-keep class com.asus.robotframework.** { *; }
+-keep class org.nanohttpd.** { *; }
