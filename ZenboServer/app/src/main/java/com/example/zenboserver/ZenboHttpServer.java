@@ -123,18 +123,17 @@ public class ZenboHttpServer extends NanoHTTPD {
 
         switch (mode) {
             case "solid":
-                robotAPI.wheelLights.setBrightness(lights, 255, -1);
-                robotAPI.wheelLights.setColor(lights, color, -1);
+                robotAPI.wheelLights.setColor(lights, color, 0);
                 break;
             case "blink":
-                robotAPI.wheelLights.startBlinking(lights, color, 400, 400, -1);
+                robotAPI.wheelLights.startBlinking(lights, color, 400, 400, 0);
                 break;
             case "breathe":
-                robotAPI.wheelLights.startBreathing(lights, color, 2000, 255, -1);
+                robotAPI.wheelLights.startBreathing(lights, color, 2000, 100, 0);
                 break;
             case "marquee":
                 robotAPI.wheelLights.startMarquee(lights,
-                        WheelLights.Direction.DIRECTION_FORWARD, color, 150, -1);
+                        WheelLights.Direction.DIRECTION_FORWARD, color, 150, 0);
                 break;
             case "off":
                 robotAPI.wheelLights.turnOff(lights, 0);
