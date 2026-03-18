@@ -17,7 +17,7 @@ ZenboServer (Zenbo 機器人)
 | 專案 | 裝置 | 說明 |
 |------|------|------|
 | `ZenboServer` | Zenbo 機器人 | 跑 HTTP Server（port 8080），接收指令並呼叫 Zenbo SDK |
-| `ZenboClient` | 手機 / 平板 | 控制介面，透過 HTTP 送出指令 |
+| `ZenboClient` | 手機 / 平板 | 控制介面並透過 HTTP 送出指令 |
 
 ## 功能
 
