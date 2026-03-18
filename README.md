@@ -76,7 +76,3 @@ Zenbo/
         ├── MainActivity.java          # 控制介面
         └── ZenboApi.java              # HTTP 呼叫封裝
 ```
-
-## License
-
-MIT
