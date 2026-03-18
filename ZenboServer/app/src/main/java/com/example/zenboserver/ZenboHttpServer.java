@@ -123,20 +123,19 @@ public class ZenboHttpServer extends NanoHTTPD {
 
         switch (mode) {
             case "solid":
-                // active = duration(ms), Integer.MAX_VALUE ≈ permanent
+                // No SOLID pattern exists; simulate with blink t1=MAX, t2=0 (never off)
                 robotAPI.wheelLights.setColor(lights, Integer.MAX_VALUE, color);
+                robotAPI.wheelLights.startBlinking(lights, 0, Integer.MAX_VALUE, 0, 0);
                 break;
             case "blink":
                 robotAPI.wheelLights.setColor(lights, Integer.MAX_VALUE, color);
-                robotAPI.wheelLights.startBlinking(lights, 1, 400, 400, 0);
+                robotAPI.wheelLights.startBlinking(lights, 0, 400, 400, 0);
                 break;
             case "breathe":
                 robotAPI.wheelLights.setColor(lights, Integer.MAX_VALUE, color);
-                robotAPI.wheelLights.startBreathing(lights, 1, 2000, 100, 0);
+                robotAPI.wheelLights.startBreathing(lights, 0, 2000, 100, 0);
                 break;
             case "marquee":
-                // marquee: t1=segment_time, t2=gap, number=loops(0=infinite)
-                // color comes from prior setColor; don't pass colorValue into t1
                 robotAPI.wheelLights.setColor(lights, Integer.MAX_VALUE, color);
                 robotAPI.wheelLights.startMarquee(lights,
                         WheelLights.Direction.DIRECTION_FORWARD, 150, 50, 0);
