@@ -70,6 +70,7 @@ public class ZenboHttpServer extends NanoHTTPD {
                 }
 
                 case "/stop": {
+                    robotAPI.motion.remoteControlBody(MotionControl.Direction.Body.STOP);
                     robotAPI.motion.stopMoving();
                     isFollowing = false;
                     isSpinning  = false;
@@ -122,18 +123,18 @@ public class ZenboHttpServer extends NanoHTTPD {
 
         switch (mode) {
             case "solid":
-                robotAPI.wheelLights.setBrightness(lights, 255, 0);
-                robotAPI.wheelLights.setColor(lights, color, 0);
+                robotAPI.wheelLights.setBrightness(lights, 255, -1);
+                robotAPI.wheelLights.setColor(lights, color, -1);
                 break;
             case "blink":
-                robotAPI.wheelLights.startBlinking(lights, color, 400, 400, 0);
+                robotAPI.wheelLights.startBlinking(lights, color, 400, 400, -1);
                 break;
             case "breathe":
-                robotAPI.wheelLights.startBreathing(lights, color, 2000, 255, 0);
+                robotAPI.wheelLights.startBreathing(lights, color, 2000, 255, -1);
                 break;
             case "marquee":
                 robotAPI.wheelLights.startMarquee(lights,
-                        WheelLights.Direction.DIRECTION_FORWARD, color, 150, 0);
+                        WheelLights.Direction.DIRECTION_FORWARD, color, 150, -1);
                 break;
             case "off":
                 robotAPI.wheelLights.turnOff(lights, 0);
@@ -154,15 +155,15 @@ public class ZenboHttpServer extends NanoHTTPD {
 
     private int parseColor(String name) {
         switch (name.toLowerCase()) {
-            case "red":    return 0xFFFF0000;
-            case "green":  return 0xFF00FF00;
-            case "blue":   return 0xFF0000FF;
-            case "yellow": return 0xFFFFFF00;
-            case "purple": return 0xFF9C27B0;
-            case "cyan":   return 0xFF00FFFF;
-            case "orange": return 0xFFFF6600;
-            case "off":    return 0x00000000;
-            default:       return 0xFFFFFFFF; // white
+            case "red":    return 0xFF0000;
+            case "green":  return 0x00FF00;
+            case "blue":   return 0x0000FF;
+            case "yellow": return 0xFFFF00;
+            case "purple": return 0x9C27B0;
+            case "cyan":   return 0x00FFFF;
+            case "orange": return 0xFF6600;
+            case "off":    return 0x000000;
+            default:       return 0xFFFFFF; // white
         }
     }
 

@@ -68,8 +68,9 @@ public class MainActivity extends Activity {
                 }));
             } else {
                 send(() -> api.stop((ok, msg) -> {
-                    if (ok) { isSpinning = false; updateSpinBtn(); }
-                    log("轉圈：" + (ok ? "停止" : "失敗"));
+                    isSpinning = false;
+                    updateSpinBtn();
+                    log("轉圈：" + (ok ? "停止" : "停止（連線異常）"));
                 }));
             }
         });
